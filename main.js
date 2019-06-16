@@ -92,17 +92,43 @@ function flip() {
     let index = this.id[1];
     this.src = "img/" + tileArray[index] + ".jpg";
     this.setAttribute("class", ".back");
-    console.log(index);
     if (hasFlipped == false) {
         hasFlipped = true;
-        firstCard = this.getAttribute(src,);
+        console.log(typeof(Number(this.getAttribute("src")[5])));
+        console.log("this is length: "+ this.getAttribute("src").length);
+        if(this.getAttribute("src").length<10){
+            firstCard = Number(this.getAttribute("src")[5]);
+        }
+        /*else if(this.getAttribute("src").length<20){
+            firstCard = this.getAttribute("src")[6]+10;
+        }
+        else if(this.getAttribute("src").length<30){
+            firstCard = this.getAttribute("src")[6]+20;
+        }
+        else if(this.getAttribute("src").length<40){
+            firstCard = this.getAttribute("src")[6]+30;
+        }*/
+        //console.log(firstCard);
+        //firstCard = this.getAttribute("src")[index];
         console.log("this is firstCard: " + firstCard);
     }
     else {
         hasFlipped = false;
-        secondCard = this.querySelector(".back");
+        if(this.getAttribute("src").length<10){
+            secondCard = this.getAttribute("src")[5];
+        }
+        else if(this.getAttribute("src").length<20){
+            secondCard = this.getAttribute("src")[6]+10;
+        }
+        else if(this.getAttribute("src").length<30){
+            secondCard = this.getAttribute("src")[6]+20;
+        }
+        else if(this.getAttribute("src").length<40){
+            secondCard = this.getAttribute("src")[6]+30;
+        }
+        //console.log(firstCard);
         console.log("this is secondCard: " + secondCard);
-        if (firstCard.innerHTML != secondCard.innerHTML) {//no match
+        if (firstCard != secondCard) {//no match
             setTimeout(function () {
                 firstCard.style.opacity = 0;
                 secondCard.style.opacity = 0;
